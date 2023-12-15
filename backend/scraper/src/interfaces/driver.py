@@ -20,16 +20,16 @@ class Driver:
         element = self.__driver.find_element(By.XPATH, value)
         return element
 
-    def wait_element_disappear(self, value: str, timeout: float, by=By.XPATH):
-        WebDriverWait(self.__driver, timeout).until(EC.invisibility_of_element((by, value)))
-
     def __build_driver(self):
         try:
             options = Options()
-            options.add_argument('--headless')
+            # options.add_argument('--headless')
             options.add_argument('--window-size=1920,1080')
             driver = Chrome(options=options)
             driver.maximize_window()
         except:
             return self.__build_driver()
         return driver
+    
+    def back(self):
+        self.__driver.back()
